@@ -37,18 +37,23 @@ let menuElemanlari = [
 function menuYapici(eleman) {
   const menuDiv = document.createElement("div");
   menuDiv.classList.add("menu");
+
   const unorderdLi = document.createElement("ul");
+
   eleman.forEach((item) => {
     const listeElamani = document.createElement("li");
     listeElamani.textContent = item;
     unorderdLi.appendChild(listeElamani);
   });
+
   menuDiv.appendChild(unorderdLi);
+
   const menuButton = document.querySelector(".menu-button");
   menuButton.addEventListener("click", () => {
     menuDiv.classList.toggle("menu--open");
+    const header = document.querySelector(".header");
+    header.appendChild(menuDiv);
   });
   return menuDiv;
 }
-const header = document.querySelector("header");
-header.appendChild(menuYapici(menuElemanlari));
+menuYapici(menuElemanlari);
